@@ -34,6 +34,6 @@ fi
 cd "$currentDir"
 cd "$backupDir"
 fileName="$currentDate.tar.gz"
-tar -czvf $fileName *
+tar --exclude='*.bak*' -czvf $fileName *
 mv $fileName "$destination"
 echo "Backup complete!: $currentDate.tar.gz"
