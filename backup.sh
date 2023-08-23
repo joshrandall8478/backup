@@ -39,4 +39,6 @@ cd "$backupDir"
 fileName="$currentDate.tar.gz"
 tar --exclude='*.bak*' -czvf $fileName *
 mv $fileName "$destination"
-echo "Backup complete!: $currentDate.tar.gz"
+
+cd "$destination"
+(ls "$currentDate.tar.gz" >> /dev/null 2>&1 && echo "Backup complete!: $currentDate.tar.gz") || echo "Backup did not fully complete. Please check debug for errors."
