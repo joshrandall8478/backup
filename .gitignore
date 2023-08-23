@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Except for the following files
+!backup.sh
+!cleanup.sh
+!README.md
+!.gitignore

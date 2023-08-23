@@ -5,6 +5,11 @@
 # "-90 days"
 # "-1 minute"
 
+if ! [ $(id -u) = 0 ]; then
+   echo "The script needs to be run as root." >&2
+   exit 1
+fi
+
 if [ "$1" = "" ] || [ "$2" = "" ]; then
         echo "Invalid usage, use -h for more info"
         exit
