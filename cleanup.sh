@@ -10,7 +10,7 @@ if ! [ $(id -u) = 0 ]; then
    exit 1
 fi
 
-if [ "$1" = "" ] || [ "$2" = "" ]; then
+if [ "$1" = "" ] || [ "$2" = "" ] || [ "$3" = "" ]; then
         echo "Invalid usage, use -h for more info"
         exit
 fi
@@ -26,7 +26,7 @@ fi
 
 if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
         echo "Usage:"
-	echo "./cleanup.sh /target-dir $(echo '"date-adjuster"')"
+	echo "./cleanup.sh /target-dir $(echo '"date-adjuster"') (minimum files to be kept)"
 	echo ""
 	echo "Examples of date adjusters:"
 	echo '"-90 days"'
@@ -43,6 +43,7 @@ cd $1
 targetDir=$(pwd)
 cd "$currentDir"
 dateAdjuster="$2"
+minimumFiles=$3
 
 echo "Current date: $currentDate"
 echo "cleanup.sh will delete any backup in '$targetDir' older than: $(echo $dateAdjuster | tr -d '-')"
